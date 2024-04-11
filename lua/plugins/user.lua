@@ -27,10 +27,12 @@ local config = {
     copilot_tab_fallback = "",
     },
   },
-  mappings = require "user.user.keybinds",
+  -- mappings = require "./profile.keybinds",
   -- Configure plugins
-  plugins = require "user.user.init",
+  plugins = require "profile.plugins",
   -- lsp = require "user.lsp",
+  
+
 
   polish = function()
    local copilot_options = { silent = true, expr = true, script = true }
