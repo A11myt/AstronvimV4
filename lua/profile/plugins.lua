@@ -1,4 +1,3 @@
----@type LazySpec
 return {
   init = {
     -- You can disable default plugins as follows:
