@@ -64,7 +64,7 @@ return {
   -- },
   -- use mason-tool-installer to configure DAP/Formatters/Linter installation
   --
-  {"Jellydn/CopilotChat.nvim",
+  "Jellydn/CopilotChat.nvim",
    opts = {
       mode = "split",
       prompts = {
@@ -87,7 +87,7 @@ return {
       { "<leader>ccr", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
       { "<leader>ccR", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
     },
-  },
+  
   "andweeb/presence.nvim",
   {
     "ray-x/lsp_signature.nvim",
