@@ -9,22 +9,19 @@ local config = {
   -- plugins = require "profile.plugins",
   -- lsp = require "user.lsp",
 
-
-
   --Options
   options = {
-    opt ={
-  relativenumber = true,
+    opt = {
+      relativenumber = true,
       textwidth = 80,
       colorcolumn = "80",
     },
     g = {
-    copilot_no_tab_map = true,
-    opilot_assume_mapped = true,
-    copilot_tab_fallback = "",
+      copilot_no_tab_map = true,
+      opilot_assume_mapped = true,
+      copilot_tab_fallback = "",
     },
   },
-
   --colorSchemes
   "sainnhe/sonokai",
   init = function() -- init function runs before the plugin is loaded
@@ -33,29 +30,24 @@ local config = {
   end,
   "rmehri01/onenord.nvim",
   init = function()
-    require('onenord').setup({
+    require("onenord").setup {
       disable = {
         background = true,
         borders = true,
       },
-    })
+    }
   end,
   "bluz71/vim-nightfly-colors",
-  init = function()
-    vim.g.nightflyCursorColor = 1
-  end,
+  init = function() vim.g.nightflyCursorColor = 1 end,
   "overcache/NeoSolarized",
-  init = function()
-    vim.g.neosolarized_style = "dark"
-  end,
+  init = function() vim.g.neosolarized_style = "dark" end,
   "catppuccin/nvim",
   init = function()
-    require("catppuccin").setup({
+    require("catppuccin").setup {
       flavor = "mocha",
       transparent_background = true,
-    })
+    }
   end,
-
 
   --KeyMappings
   n = {
@@ -94,9 +86,9 @@ local config = {
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
-        }
-      }
-    }
+        },
+      },
+    },
     -- ["NERDTree"] = { ShowHidden = 1 },
     -- You can also add new plugins here as well:
     -- Add plugins, the packer syntax without the "use"
@@ -131,16 +123,16 @@ local config = {
     }
     -- set up null-ls's on_attach function
     -- NOTE: You can remove this on attach function to disable format on save
-    config.on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          desc = "Auto format before save",
-          pattern = "<buffer>",
-          callback = vim.lsp.buf.formatting_sync,
-        })
-      end
-    end
-    return config -- return final config table to use in require("null-ls").setup(config)
+    -- config.on_attach = function(client)
+    --   if client.resolved_capabilities.document_formatting then
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --       desc = "Auto format before save",
+    --       pattern = "<buffer>",
+    --       callback = vim.lsp.buf.formatting_sync,
+    --     })
+    --   end
+    -- end
+    -- return config -- return final config table to use in require("null-ls").setup(config)
   end,
   -- treesitter = { -- overrides `require("treesitter").setup(...)`
   --   ensure_installed = { "lua" },
@@ -163,30 +155,28 @@ local config = {
   },
   build = function()
     vim.defer_fn(function()
-      vim.cmd("UpdateRemotePlugins")
-      vim.notify("CopilotChat - Updated remote plugins. Please restart Neovim.")
+      vim.cmd "UpdateRemotePlugins"
+      vim.notify "CopilotChat - Updated remote plugins. Please restart Neovim."
     end, 3000)
   end,
   event = "VeryLazy",
   keys = {
-    { "<leader>cce", "<cmd>CopilotChatExplain<cr>",  desc = "CopilotChat - Explain code" },
-    { "<leader>cct", "<cmd>CopilotChatTests<cr>",    desc = "CopilotChat - Generate tests" },
-    { "<leader>ccr", "<cmd>CopilotChatReview<cr>",   desc = "CopilotChat - Review code" },
+    { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+    { "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+    { "<leader>ccr", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
     { "<leader>ccR", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
   },
-
-  "andweeb/presence.nvim",
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
+  --
+  -- "andweeb/presence.nvim",
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "BufRead",
+  --   config = function() require("lsp_signature").setup() end,
+  -- },
 
   -- == Examples of Overriding Plugins ==
 
   -- customize alpha options
-
-
 
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
@@ -195,7 +185,7 @@ local config = {
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip" (plugin, opts) -- include the default astronvim config that calls the setup call
+      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom luasnip configuration such as filetype extend or custom snippets
       local luasnip = require "luasnip"
       luasnip.filetype_extend("javascript", { "javascriptreact" })
@@ -204,7 +194,7 @@ local config = {
   {
     "windwp/nvim-autopairs",
     config = function(plugin, opts)
-      require "astronvim.plugins.configs.nvim-autopairs" (plugin, opts) -- include the default astronvim config that calls the setup call
+      require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom autopairs configuration such as custom rules
       local npairs = require "nvim-autopairs"
       local Rule = require "nvim-autopairs.rule"
@@ -212,26 +202,24 @@ local config = {
       npairs.add_rules(
         {
           Rule("$", "$", { "tex", "latex" })
-          -- don't add a pair if the next character is %
-              :with_pair(cond.not_after_regex "%%")
-          -- don't add a pair if  the previous character is xxx
-              :with_pair(
-                cond.not_before_regex("xxx", 3)
-              )
-          -- don't move right when repeat character
-              :with_move(cond.none())
-          -- don't delete if the next character is xx
-              :with_del(cond.not_after_regex "xx")
-          -- disable adding a newline when you press <cr>
-              :with_cr(cond.none()),
+            -- don't add a pair if the next character is %
+            :with_pair(cond.not_after_regex "%%")
+            -- don't add a pair if  the previous character is xxx
+            :with_pair(
+              cond.not_before_regex("xxx", 3)
+            )
+            -- don't move right when repeat character
+            :with_move(cond.none())
+            -- don't delete if the next character is xx
+            :with_del(cond.not_after_regex "xx")
+            -- disable adding a newline when you press <cr>
+            :with_cr(cond.none()),
         },
         -- disable for .vim files, but it work for another filetypes
         Rule("a", "a", "-vim")
       )
     end,
   },
-
-
 
   --
   ["mason-tool-installer"] = { -- overrides `require("mason-tool-installer").setup(...)`
@@ -241,21 +229,19 @@ local config = {
     compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
   },
 
-
-
   {
     "lukas-reineke/virt-column.nvim",
     init = function()
-      require("virt-column").setup({
+      require("virt-column").setup {
         char = "║",
-      })
-    end
+      }
+    end,
   },
   {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
+    "phaazon/hop.nvim",
+    branch = "v2", -- optional but strongly recommended
     event = "InsertEnter",
-    as = 'hop',
+    as = "hop",
     config = [[require('user.hop')]],
   },
   {
@@ -292,11 +278,11 @@ local config = {
     end,
   },
   {
-    'zbirenbaum/copilot.lua',
+    "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function(plugin, opts)
-      require('copilot').setup({
+      require("copilot").setup {
         suggestion = {
           auto_trigger = true,
           accept = "<fn-l>",
@@ -306,8 +292,8 @@ local config = {
           prev = "<fn-[>",
           dismiss = "<C-]>",
         },
-      })
-    end
+      }
+    end,
   },
 
   polish = function()
