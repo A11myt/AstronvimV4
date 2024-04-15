@@ -31,12 +31,17 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-        wrap = false, -- sets vim.opt.wrap
+        wrap = false,
+        textwidth = 80,
+        colorcolumn = "80", -- sets vim.opt.wrap
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+        copilot_no_tab_map = true,
+        copilot_assume_mapped = true,
+        copilot_tab_fallback = "",
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -45,10 +50,28 @@ return {
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
+        -- second key is the lefthand side of the map
+        -- mappings seen under group name "Buffer"
+        ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+        ["<Leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
+        ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
+        ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+        -- quick save
+        -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        ["<leader>wl"] = { "<cmd>vsplit<cr>", desc = "Split window vertically" },
+        ["<leader>wo"] = { "<c-w>o", desc = "Maximize window" },
 
+        ["<leader>fk"] = { "<cmd>Telescope keymaps<cr>", desc = "Find keymapgs" },
+        ["<C-e>"] = { "<cmd>Telescope oldfiles<cr>", desc = "Find recent files" },
+        ["<leader>xx"] = { '<cmd>lua vim.notify("haha")<cr>', desc = "Test lua mapping" },
+        ["<M-n>"] = { '<cmd>lua vim.notify("heihei")<cr>', desc = "Test lua mapping" },
         -- navigate buffer tabs with `H` and `L`
         L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        i = {
+          [";;"] = { ":=" },
+          [";a"] = { "!=" },
+        },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
