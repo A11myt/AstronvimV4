@@ -1,4 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 --              AstroNvim Configuration Table
 -- All configuration changes should go inside of the table below
 
