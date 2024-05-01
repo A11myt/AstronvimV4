@@ -1,3 +1,4 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -30,18 +31,9 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-        wrap = true,
-        textwidth = 180,
-        colorcolumn = "180", -- sets vim.opt.wrap
-         listchars = {
-          trail = "·",
-          tab = "│→",
-          -- eol = "⤶",
-          extends = "⟩",
-          precedes = "⟨",
-          nbsp = "␣",
-          -- space = '❤',
-        },
+        wrap = false,
+        -- textwidth = 80,
+        colorcolumn = "80", -- sets vim.opt.wrap
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
