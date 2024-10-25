@@ -12,8 +12,53 @@ return {
   { import = "astrocommunity.colorscheme.everforest" },
   { import = "astrocommunity.colorscheme.sonokai" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  { import = "astrocommunity.colorscheme.nord-nvim" },
+  -- { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.colorscheme.sonokai" },
+  {
+    "A11myt/darknord.nvim",
+    dependencies = {
+      "AstroNvim/astrocore",
+      opts = {
+        options = {
+          g = {
+            nord_contrast = true,
+            nord_borders = false,
+            nord_disable_background = false,
+            nord_italic = false,
+            nord_uniform_diff_background = true,
+            nord_bold = false,
+          },
+        },
+      },
+    },
+  },
+  {
+    "lukas-reineke/headlines.nvim",
+    optional = true,
+    opts = {
+      markdown = {
+        headline_highlights = {
+          "Headline1",
+          "Headline2",
+          "Headline3",
+          "Headline4",
+          "Headline5",
+          "Headline6",
+        },
+      },
+    },
+  },
+  {
+    "akinsho/bufferline.nvim",
+    optional = true,
+    opts = function(_, opts)
+      return require("astrocore").extend_tbl(opts, {
+        highlights = require("nord").bufferline.highlights { italic = true, bold = true },
+        options = { separator_style = "thin" },
+      })
+    end,
+  },
+  -- { import = "shaunsingh/nord.nvim"},
   --completion
   { import = "astrocommunity.completion.copilot-lua" },
   --motion

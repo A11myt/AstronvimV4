@@ -17,6 +17,9 @@ return {
     },
     -- customize lsp formatting options
     formatting = {
+      proseWrap = "never",
+      textWidth = 0, -- default text width for formatting
+      -- wrap = false, -- default wrap option for formatting
       -- control auto formatting on save
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
