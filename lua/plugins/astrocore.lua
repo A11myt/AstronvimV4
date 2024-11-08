@@ -32,8 +32,8 @@ return {
         spell = false,         -- sets vim.opt.spell
         signcolumn = "auto",   -- sets vim.opt.signcolumn to auto
         wrap = true,
-        textwidth = 140,
-        colorcolumn = "80", -- sets vim.opt.wrap
+        textwidth = 120,
+        colorcolumn = "120", -- sets vim.opt.wrap
         linebreak = false,
       },
       g = { -- vim.g.<key>
