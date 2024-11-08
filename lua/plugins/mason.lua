@@ -22,8 +22,21 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
+        "arduino-language-server",
+        "astro-language-server",
+        "bash-language-server",
+        "eslint-lsp",
+        "firefox-debug-adapter",
+        "html-lsp",
+        "json-lsp",
+        "lua-language-server",
+        "mdx-analyzer",
         "prettier",
+        "selene",
         "stylua",
+        "svelte-language-server",
+        "tailwindcss-language-server",
+        "typescript-language-server",
         -- add more arguments for adding more null-ls sources
       })
     end,

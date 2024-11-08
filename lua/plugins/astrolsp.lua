@@ -16,15 +16,21 @@ return {
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
-    formatting = {
-      proseWrap = "never",
-      textWidth = 0, -- default text width for formatting
-      -- wrap = false, -- default wrap option for formatting
-      -- control auto formatting on save
-      format_on_save = {
+        formatting = {
+        proseWrap = "never", -- Do not wrap prose
+        textWidth = 140, -- Default text width for formatting
+        printWidth = 140, -- Maximum line length for formatting
+        -- trailingComma = "es5", -- Add trailing commas where valid in ES5 (objects, arrays, etc.)
+        -- bracketSpacing = true, -- Print spaces between brackets in object literals
+        wrap = false, -- Disable wrapping
+        -- control auto formatting on save
+        format_on_save = {
         enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
+          "ts",
+          "tsx",
+          "astro",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",

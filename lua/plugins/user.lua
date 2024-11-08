@@ -11,6 +11,14 @@ local config = {
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
 
+
+        highlight = {
+          enable = true,              -- false will disable the whole extension
+          additional_vim_regex_highlighting = false,
+        },
+
+  -- Set the language to German
+  -- vim.cmd('language de_DE.UTF-8'),
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",

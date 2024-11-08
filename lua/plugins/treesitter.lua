@@ -13,6 +13,7 @@ return {
       "markdown",
       "typescript",
       "tsx",
+      "astro",
       "javascript",
       "css", -- add more arguments for adding more treesitter parsers
     })
