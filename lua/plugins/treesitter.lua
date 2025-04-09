@@ -15,6 +15,7 @@ return {
       "tsx",
       "astro",
       "javascript",
+      "go",
       "css", -- add more arguments for adding more treesitter parsers
     })
   end,
