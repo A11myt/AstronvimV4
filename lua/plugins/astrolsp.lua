@@ -10,21 +10,22 @@ return {
   opts = {
     -- Configuration table of features provided by AstroLSP
     features = {
+      formant_on_save = true, -- enable or disable format on save globally
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
       inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
-        formatting = {
-        proseWrap = "never", -- Do not wrap prose
-        textWidth = 140, -- Default text width for formatting
-        printWidth = 140, -- Maximum line length for formatting
-        -- trailingComma = "es5", -- Add trailing commas where valid in ES5 (objects, arrays, etc.)
-        -- bracketSpacing = true, -- Print spaces between brackets in object literals
-        wrap = false, -- Disable wrapping
-        -- control auto formatting on save
-        format_on_save = {
+    formatting = {
+      proseWrap = "never", -- Do not wrap prose
+      textWidth = 140, -- Default text width for formatting
+      printWidth = 140, -- Maximum line length for formatting
+      -- trailingComma = "es5", -- Add trailing commas where valid in ES5 (objects, arrays, etc.)
+      -- bracketSpacing = true, -- Print spaces between brackets in object literals
+      wrap = false, -- Disable wrapping
+      -- control auto formatting on save
+      format_on_save = {
         enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
@@ -45,6 +46,7 @@ return {
       --   return true
       -- end
     },
+    
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"

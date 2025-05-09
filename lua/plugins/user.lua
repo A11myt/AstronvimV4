@@ -11,11 +11,10 @@ local config = {
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
 
-
-        highlight = {
-          enable = true,              -- false will disable the whole extension
-          additional_vim_regex_highlighting = false,
-        },
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    additional_vim_regex_highlighting = false,
+  },
 
   -- Set the language to German
   -- vim.cmd('language de_DE.UTF-8'),
@@ -79,7 +78,7 @@ local config = {
     end,
   },
   {
-   "CopilotC-Nvim/CopilotChat.nvim",
+    "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
       { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
@@ -90,7 +89,32 @@ local config = {
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
-
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      local null_ls = require "null-ls"
+      opts.sources = {
+        null_ls.builtins.formatting.prettier.with {
+          extra_args = { "--print-width", "9999", "--prose-wrap", "never" },
+        },
+      }
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup({
+        surrounds = {
+          ["<"] = {
+            add = function()
+              local tag = vim.fn.input("Tag: ")
+            return {"<" .. tag .. ">", "</" .. tag .. ">"}
+            end,
+          }
+        }
+      })
+    end,
+  },
   polish = function()
     local copilot_options = { silent = true, expr = true, script = true }
     vim.api.nvim_set_keymap("i", "<C-l>", "copilot#Accept(<Tab>)", copilot_options)
